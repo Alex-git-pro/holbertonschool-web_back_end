@@ -30,22 +30,25 @@ export default class HolbertonCourse {
   }
 
   static _validateName(name) {
-    if (typeof name !== 'string') {
-      throw new TypeError('Name must be a string');
+    if (typeof name !== "string") {
+      throw new TypeError("Name must be a string");
     }
     return name;
   }
 
   static _validateLength(length) {
-    if (typeof length !== 'number') {
-      throw new TypeError('Length must be a number');
+    if (typeof length !== "number") {
+      throw new TypeError("Length must be a number");
     }
     return length;
   }
 
   static _validateStudents(students) {
-    if (!Array.isArray(students) || !students.every((student) => typeof student === 'string')) {
-      throw new TypeError('Students must be an array of strings');
+    if (
+      !Array.isArray(students) ||
+      !students.every((student) => typeof student === "string")
+    ) {
+      throw new TypeError("Students must be an array of strings");
     }
     return students;
   }
