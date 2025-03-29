@@ -1,55 +1,53 @@
 export default class HolbertonCourse {
   constructor(name, length, students) {
-    this._name = HolbertonCourse._validateName(name);
-    this._length = HolbertonCourse._validateLength(length);
-    this._students = HolbertonCourse._validateStudents(students);
+    if (typeof name !== 'string') {
+      throw new TypeError('Name must be a string');
+    }
+    if (typeof length !== 'number') {
+      throw new TypeError('Length must be a number');
+    }
+    if (
+      !Array.isArray(students) || !students.every((student) => typeof student === 'string')
+    ) {
+      throw new TypeError('Students must be an array of strings');
+    }
+    this.name = name;
+    this.length = length;
+    this.students = students;
   }
 
   get name() {
     return this._name;
   }
 
-  set name(newName) {
-    this._name = HolbertonCourse._validateName(newName);
+  set name(value) {
+    if (typeof value !== 'string') {
+      throw new TypeError('Name must be a string');
+    }
+    this._name = value;
   }
 
   get length() {
     return this._length;
   }
 
-  set length(newLength) {
-    this._length = HolbertonCourse._validateLength(newLength);
+  set length(value) {
+    if (typeof value !== 'number') {
+      throw new TypeError('Length must be a number');
+    }
+    this._length = value;
   }
 
   get students() {
     return this._students;
   }
 
-  set students(newStudents) {
-    this._students = HolbertonCourse._validateStudents(newStudents);
-  }
-
-  static _validateName(name) {
-    if (typeof name !== "string") {
-      throw new TypeError("Name must be a string");
-    }
-    return name;
-  }
-
-  static _validateLength(length) {
-    if (typeof length !== "number") {
-      throw new TypeError("Length must be a number");
-    }
-    return length;
-  }
-
-  static _validateStudents(students) {
+  set students(value) {
     if (
-      !Array.isArray(students) ||
-      !students.every((student) => typeof student === "string")
+      !Array.isArray(value) || !value.every((student) => typeof student === 'string')
     ) {
-      throw new TypeError("Students must be an array of strings");
+      throw new TypeError('Students must be an array of strings');
     }
-    return students;
+    this._students = value;
   }
 }
