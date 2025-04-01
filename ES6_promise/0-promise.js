@@ -1,12 +1,7 @@
 function getResponseFromAPI() {
-    return new Promise((resolve, reject) => {
-      const response = {
-        firstName: 'Guillaume',
-        lastName: 'Salva',
-      };
+  return new Promise((resolve, reject) => {
+    resolve('Response from API');
+  });
+}
 
-      resolve(response);
-    });
-  }
-
-  export default getResponseFromAPI;
+export default getResponseFromAPI;
