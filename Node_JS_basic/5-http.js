@@ -1,6 +1,11 @@
 const http = require("http");
 const fs = require("fs");
 
+/**
+ * A function that accepts a path to a csv file that contains list of students
+ * and returns the total count of students and the count of students in each
+ * field of study. It reads the file asynchronously.
+ */
 function countStudents(path) {
   return new Promise((resolve, reject) => {
     fs.readFile(path, "utf8", (err, data) => {
